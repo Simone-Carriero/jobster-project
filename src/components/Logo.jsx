@@ -5,7 +5,8 @@ const Logo = () => {
   return (
     <img
       src={logo}
-      alt='logo'
+      alt='jobster logo'
+      className='logo'
     />
   );
 };
