@@ -1,11 +1,10 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/SmallSidebarStyle';
 import { FaTimes } from 'react-icons/fa';
 import Logo from './Logo';
-import links from '../utils/links';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleSidebar } from '../features/user/userSlice';
+import NavLinks from './NavLinks';
 
 const SmallSidebar = () => {
   const { isSidebarOpen } = useSelector((state) => state.user);
@@ -29,22 +28,7 @@ const SmallSidebar = () => {
           <header>
             <Logo />
           </header>
-          <div className='nav-links'>
-            {links.map((link) => {
-              return (
-                <NavLink
-                  to={link.path}
-                  key={link.id}
-                  end
-                  onClick={toggle}
-                  className={`nav-link ${({ isActive }) =>
-                    isActive && 'active'}`}>
-                  <span className='icon'>{link.icon}</span>
-                  {link.text}
-                </NavLink>
-              );
-            })}
-          </div>
+          <NavLinks toggleSidebar={toggle} />
         </div>
       </div>
     </Wrapper>
