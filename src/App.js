@@ -10,6 +10,7 @@ import {
 import { Landing, Register, Error } from './pages/index';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ProtectedRoute from './pages/ProtectedRoute';
 
 function App() {
   return (
@@ -17,7 +18,11 @@ function App() {
       <Routes>
         <Route
           path='/'
-          element={<SharedLayout />}>
+          element={
+            <ProtectedRoute>
+              <SharedLayout />
+            </ProtectedRoute>
+          }>
           <Route
             index
             element={<Stats />}
