@@ -30,6 +30,26 @@ const Wrapper = styled.section`
     height: 35px;
   }
 
+  .btn-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1rem;
+    align-self: flex-end;
+    margin-top: 0.5rem;
+
+    button {
+      height: 35px;
+    }
+  }
+
+  .clear-btn {
+    background-color: var(--grey-500);
+  }
+
+  .clear-btn:hover {
+    background-color: var(--black);
+  }
+
   @media only screen and (min-width: 992px) {
     .form-center {
       grid-template-columns: repeat(2, 1fr);
