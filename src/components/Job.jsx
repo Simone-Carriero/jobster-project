@@ -5,7 +5,7 @@ import Wrapper from '../assets/wrappers/JobStyle';
 import JobInfo from './JobInfo';
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
-import { deleteJob } from '../features/jobSlice';
+import { deleteJob, setEditJob } from '../features/jobSlice';
 
 const Job = ({
   _id,
@@ -47,7 +47,19 @@ const Job = ({
         <footer>
           <div className='actions'>
             <Link
-              to=''
+              to='/add-job'
+              onClick={() => {
+                dispatch(
+                  setEditJob({
+                    editJobId: _id,
+                    company,
+                    jobLocation,
+                    jobType,
+                    position,
+                    status,
+                  })
+                );
+              }}
               className='btn edit-btn'>
               Edit
             </Link>

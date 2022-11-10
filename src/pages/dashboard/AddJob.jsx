@@ -4,7 +4,12 @@ import { toast } from 'react-toastify';
 import Wrapper from '../../assets/wrappers/DashboardFormPageStyle';
 import FormRow from '../../components/FormRow';
 import FormRowSelect from '../../components/FormRowSelect';
-import { handleChange, clearValues, createJob } from '../../features/jobSlice';
+import {
+  handleChange,
+  clearValues,
+  createJob,
+  editJob,
+} from '../../features/jobSlice';
 
 const AddJob = () => {
   const {
@@ -32,6 +37,22 @@ const AddJob = () => {
     e.preventDefault();
     if (!position || !company || !jobLocation) {
       toast.error('Please Fill Out All Fields');
+      return;
+    }
+
+    if (isEditing) {
+      dispatch(
+        editJob({
+          jobId: editJobId,
+          job: {
+            position,
+            company,
+            jobLocation,
+            status,
+            jobType,
+          },
+        })
+      );
       return;
     }
 
