@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/JobStyle';
 import JobInfo from './JobInfo';
 import moment from 'moment';
+import { useDispatch } from 'react-redux';
+import { deleteJob } from '../features/jobSlice';
 
 const Job = ({
   _id,
@@ -14,6 +16,7 @@ const Job = ({
   position,
   status,
 }) => {
+  const dispatch = useDispatch();
   const date = moment(createdAt).format('MMM Do, YY');
   return (
     <Wrapper>
@@ -50,7 +53,10 @@ const Job = ({
             </Link>
             <button
               type='button'
-              className='btn delete-btn'>
+              className='btn delete-btn'
+              onClick={() => {
+                dispatch(deleteJob(_id));
+              }}>
               Delete
             </button>
           </div>
