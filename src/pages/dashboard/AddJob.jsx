@@ -9,7 +9,7 @@ import {
   clearValues,
   createJob,
   editJob,
-} from '../../features/jobSlice';
+} from '../../features/job/jobSlice';
 
 const AddJob = () => {
   const {
