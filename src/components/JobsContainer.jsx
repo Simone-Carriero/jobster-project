@@ -1,11 +1,17 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Wrapper from '../assets/wrappers/JobsContainerStyle';
+import { getAllJobs } from '../features/allJobsSlice';
 import Job from './Job';
 import Loading from './Loading';
 
 const JobsContainer = () => {
   const { isLoading, jobs } = useSelector((state) => state.allJobs);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllJobs());
+  }, []);
 
   if (isLoading) {
     return (
