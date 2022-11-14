@@ -1,7 +1,7 @@
 import customFetch from '../../utils/axios';
 import { logoutUser } from '../user/userSlice';
 import { clearValues } from './jobSlice';
-import { showLoading, hideLoading, getAllJobs } from '../allJobsSlice';
+import { showLoading, hideLoading, getAllJobs } from '../allJobs/allJobsSlice';
 
 export const createJobThunk = async (job, thunkAPI) => {
   try {

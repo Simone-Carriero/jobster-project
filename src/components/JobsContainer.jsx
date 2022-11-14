@@ -1,15 +1,23 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Wrapper from '../assets/wrappers/JobsContainerStyle';
-import { getAllJobs } from '../features/allJobsSlice';
+import { getAllJobs } from '../features/allJobs/allJobsSlice';
 import Job from './Job';
 import Loading from './Loading';
 import PageBtnContainer from './PageBtnContainer';
 
 const JobsContainer = () => {
-  const { isLoading, jobs, totalJobs, numOfPages, page, search, status, type, sort } = useSelector(
-    (state) => state.allJobs
-  );
+  const {
+    isLoading,
+    jobs,
+    totalJobs,
+    numOfPages,
+    page,
+    search,
+    status,
+    type,
+    sort,
+  } = useSelector((state) => state.allJobs);
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Wrapper from '../assets/wrappers/SearchContainerStyle';
-import { clearFilters, handleChange } from '../features/allJobsSlice';
+import { clearFilters, handleChange } from '../features/allJobs/allJobsSlice';
 import FormRow from './FormRow';
 import FormRowSelect from './FormRowSelect';
 

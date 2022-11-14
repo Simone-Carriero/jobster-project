@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ChartsContainer from '../../components/ChartsContainer';
 import StatsContainer from '../../components/StatsContainer';
-import { showStats } from '../../features/allJobsSlice';
+import { showStats } from '../../features/allJobs/allJobsSlice';
 import Loading from '../../components/Loading';
 
 const Stats = () => {
