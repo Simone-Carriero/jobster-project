@@ -5,7 +5,14 @@ import customFetch from '../utils/axios';
 export const getAllJobs = createAsyncThunk(
   'allJobs/getJobs',
   async (_, thunkAPI) => {
-    let url = `/jobs`;
+    const { search, type, status, sort, page } = thunkAPI.getState().allJobs;
+
+    let url = `/jobs?status=${status}&jobType=${type}&sort=${sort}&page=${page}`;
+
+    if (search) {
+      url = url + `&search=${search}`;
+    }
+
     try {
       const resp = await customFetch.get(url, {
         headers: {
@@ -64,10 +71,11 @@ const allJobsSlice = createSlice({
       state.isLoading = false;
     },
     handleChange: (state, { payload: { name, value } }) => {
+      state.page = 1;
       state[name] = value;
     },
-    changePage: (state, {payload}) => {
-      state.page = payload
+    changePage: (state, { payload }) => {
+      state.page = payload;
     },
     clearFilters: (state) => {
       return { ...state, ...initialFiltersState };
@@ -102,6 +110,11 @@ const allJobsSlice = createSlice({
   },
 });
 
-export const { showLoading, hideLoading, handleChange, clearFilters, changePage } =
-  allJobsSlice.actions;
+export const {
+  showLoading,
+  hideLoading,
+  handleChange,
+  clearFilters,
+  changePage,
+} = allJobsSlice.actions;
 export default allJobsSlice.reducer;
