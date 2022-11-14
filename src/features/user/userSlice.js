@@ -5,7 +5,12 @@ import {
   removeUserFromLocalStorage,
 } from '../../utils/localStorage';
 import { toast } from 'react-toastify';
-import { loginUserThunk, registerUserThunk, updateUserTunk } from './userThunk';
+import {
+  clearStoreThunk,
+  loginUserThunk,
+  registerUserThunk,
+  updateUserTunk,
+} from './userThunk';
 
 export const registerUser = createAsyncThunk(
   'user/registerUser',
@@ -25,6 +30,7 @@ export const updateUser = createAsyncThunk(
     return updateUserTunk('/auth/updateUser', user, thunkAPI);
   }
 );
+export const clearStore = createAsyncThunk('user/clearStore', clearStoreThunk);
 
 const initialState = {
   isLoading: false,
@@ -91,6 +97,9 @@ const userSlice = createSlice({
     [updateUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
       toast.error(payload);
+    },
+    [clearStore.rejected]: () => {
+      toast.error('There was an error');
     },
   },
 });
